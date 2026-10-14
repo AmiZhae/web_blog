@@ -1,5 +1,4 @@
 {% extends 'blog/base.html' %}
-
 {% block content %}
 <div class="post">
     {% if post.published_date %}
@@ -13,6 +12,13 @@
     </a>
     {% endif %}
     <h1>{{ post.title }}</h1>
+    {% if post.image %}
+    <div class="post-image">
+        <img src="{{ post.image.url }}"
+             alt="{{ post.title }}"
+             style="max-width: 100%; width: 500px; height: auto; border-radius: 8px; margin: 20px 0;">
+    </div>
+    {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 {% endblock %}

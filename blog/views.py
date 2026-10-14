@@ -45,6 +45,10 @@ def post_edit(request, pk):
 def js_test(request):
     return render(request, 'blog/js_test.html', {})
 
-class IntruderImage(viewsets.ModelViewSet):
+
+class BlogImages(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(published_date=timezone.now())
